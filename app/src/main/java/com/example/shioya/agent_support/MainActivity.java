@@ -14,9 +14,9 @@ public class MainActivity extends Activity {
         setContentView(R.layout.activity_main);
 
         ImageButton imageButton1 = (ImageButton)findViewById(R.id.detectiveButton);
-        imageButton1.setImageResource(R.drawable.nightmare);
+        imageButton1.setImageResource(R.drawable.gamemaster);
 
         ImageView imageView1 = (ImageView)findViewById(R.id.detectiveText);
-        imageView1.setImageResource(R.drawable.nightmare_text);
+        imageView1.setImageResource(R.drawable.gamemaster_text);
     }
 }

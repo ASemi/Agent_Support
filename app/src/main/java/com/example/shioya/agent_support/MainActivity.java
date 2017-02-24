@@ -25,6 +25,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
         webView = (WebView)findViewById(R.id.webView);
         webView.getSettings().setLoadWithOverviewMode(true);
         webView.getSettings().setUseWideViewPort(true);
+        webView.getSettings().setBuiltInZoomControls(true);
 
     }
 

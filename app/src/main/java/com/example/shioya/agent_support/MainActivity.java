@@ -8,6 +8,8 @@ import android.view.Window;
 import android.webkit.WebView;
 import android.widget.ImageButton;
 
+// card_listアクティビティにこれらは移植する
+// MainActivityは起動画面
 public class MainActivity extends Activity implements View.OnClickListener {
 
     ImageButton imageButton1;
@@ -25,10 +27,11 @@ public class MainActivity extends Activity implements View.OnClickListener {
         webView = (WebView)findViewById(R.id.webView);
         webView.getSettings().setLoadWithOverviewMode(true);
         webView.getSettings().setUseWideViewPort(true);
-        webView.getSettings().setBuiltInZoomControls(true);
+        webView.getSettings().setBuiltInZoomControls(true); // ピンチアウトの設定
 
     }
 
+    // ImageButton配列とHTMLリソースの配列を用意してfor文の中でifする感じにする
     @Override
     public void onClick(View v) {
         int id = v.getId();

@@ -7,44 +7,71 @@
         jumboMode="true"
         optimize="true"
         revision="25.0.2"
-        sha1="89fcff5be52285ac2b33de3f8e509451d6c3697f">
+        sha1="bbf4b38141a1954adfae71c1bcc981eb2e9bddbc">
         <dex dex="C:\Users\shioya\AndroidStudioProjects\Agent_Support\app\build\intermediates\transforms\dex\debug\folders\1000\10\instant-run_31e292bf12d2487a607a43274c5f83d512e2a335\classes.dex" />
     </item>
     <item
         is-multidex="true"
-        jar="C:\Users\shioya\AppData\Local\Android\sdk\extras\android\m2repository\com\android\support\support-annotations\25.1.1\support-annotations-25.1.1.jar"
+        jar="C:\Users\shioya\AndroidStudioProjects\Agent_Support\app\build\intermediates\exploded-aar\com.android.support\animated-vector-drawable\25.2.0\jars\classes.jar"
         jumboMode="true"
         optimize="true"
         revision="25.0.2"
-        sha1="b59b6ee8d6ecc03e672d253800430343493a6ed8">
-        <dex dex="C:\Users\shioya\AndroidStudioProjects\Agent_Support\app\build\intermediates\transforms\dex\debug\folders\1000\10\support-annotations-25.1.1_224acae77a7b1c8e49912adf75550a0916123a3b\classes.dex" />
+        sha1="cb454b52545859ed2f24a6c01366805b0fa04b22">
+        <dex dex="C:\Users\shioya\AndroidStudioProjects\Agent_Support\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-animated-vector-drawable-25.2.0_761af6da37e6c917ef7072782401fb91603d3ac5\classes.dex" />
     </item>
     <item
         is-multidex="true"
-        jar="C:\Users\shioya\AndroidStudioProjects\Agent_Support\app\build\intermediates\exploded-aar\com.android.support\support-core-utils\25.1.1\jars\classes.jar"
+        jar="C:\Users\shioya\AndroidStudioProjects\Agent_Support\app\build\intermediates\exploded-aar\com.android.support\support-core-ui\25.2.0\jars\classes.jar"
         jumboMode="true"
         optimize="true"
         revision="25.0.2"
-        sha1="0fb891e8f0cfba0513043a7bb357513d229ca2cd">
-        <dex dex="C:\Users\shioya\AndroidStudioProjects\Agent_Support\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-core-utils-25.1.1_f11502ce3e10ac7a4cd9e5bfbc85b8cf7f0b058a\classes.dex" />
+        sha1="fa0446a14ed5dd3725047d6399ffea771a564b30">
+        <dex dex="C:\Users\shioya\AndroidStudioProjects\Agent_Support\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-core-ui-25.2.0_eb07b4f1ba22a68a163cbfa2e6aefb3758d81d32\classes.dex" />
     </item>
     <item
         is-multidex="true"
-        jar="C:\Users\shioya\AndroidStudioProjects\Agent_Support\app\build\intermediates\exploded-aar\com.android.support\support-fragment\25.1.1\jars\classes.jar"
+        jar="C:\Users\shioya\AndroidStudioProjects\Agent_Support\app\build\intermediates\exploded-aar\com.android.support\support-fragment\25.2.0\jars\classes.jar"
         jumboMode="true"
         optimize="true"
         revision="25.0.2"
-        sha1="e2719c102dca3a7a5b02ce07f769362da6ddb4ab">
-        <dex dex="C:\Users\shioya\AndroidStudioProjects\Agent_Support\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-fragment-25.1.1_f7b56787dfcdc740f8ba7802751f5a1aefb47a3c\classes.dex" />
+        sha1="8fe8a8f77d651982ce5e18f6187dc4daf914ac57">
+        <dex dex="C:\Users\shioya\AndroidStudioProjects\Agent_Support\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-fragment-25.2.0_3e5608bfb5cffdc84106aea40aa29e25af2f7b6f\classes.dex" />
     </item>
     <item
         is-multidex="true"
-        jar="C:\Users\shioya\AndroidStudioProjects\Agent_Support\app\build\intermediates\exploded-aar\com.android.support\support-vector-drawable\25.1.1\jars\classes.jar"
+        jar="C:\Users\shioya\AndroidStudioProjects\Agent_Support\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\25.2.0\jars\classes.jar"
         jumboMode="true"
         optimize="true"
         revision="25.0.2"
-        sha1="c03bf57f358aa10d253f21989e93bcf6014b3b17">
-        <dex dex="C:\Users\shioya\AndroidStudioProjects\Agent_Support\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-vector-drawable-25.1.1_500e88546c5bfed0d2fe612137b85d9b7fff0f0a\classes.dex" />
+        sha1="702d339bc0a81d21354cd7e2cf2b67225fa4a16c">
+        <dex dex="C:\Users\shioya\AndroidStudioProjects\Agent_Support\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-appcompat-v7-25.2.0_d250afa28fd5da387507a164c104f25e6f8d5bcc\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\shioya\AndroidStudioProjects\Agent_Support\app\build\intermediates\exploded-aar\com.android.support\support-vector-drawable\25.2.0\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="810f41e5b7fd99f196ebeabe865ba2c54e7e76dc">
+        <dex dex="C:\Users\shioya\AndroidStudioProjects\Agent_Support\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-vector-drawable-25.2.0_62e29c256c76b525f5dc315da3a08e015c7ad814\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\shioya\AppData\Local\Android\sdk\extras\android\m2repository\com\android\support\support-annotations\25.2.0\support-annotations-25.2.0.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="4a5a82a027706397fff621b22fd6fa796e91d7c5">
+        <dex dex="C:\Users\shioya\AndroidStudioProjects\Agent_Support\app\build\intermediates\transforms\dex\debug\folders\1000\10\support-annotations-25.2.0_ba543399afd28ff15557e2f117569874fda1289b\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\shioya\AndroidStudioProjects\Agent_Support\app\build\intermediates\exploded-aar\com.android.support\support-compat\25.2.0\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="67eb33110dbacb46a48175b08ae0c96761d2c17d">
+        <dex dex="C:\Users\shioya\AndroidStudioProjects\Agent_Support\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-compat-25.2.0_02f754364149a4862794e7f934ba2bbaf694845f\classes.dex" />
     </item>
     <item
         is-multidex="true"
@@ -52,62 +79,44 @@
         jumboMode="true"
         optimize="true"
         revision="25.0.2"
-        sha1="3dfc5c91dc75e953410f0958fe51878404753628">
+        sha1="0a069a2f610a41d7058bf1cc8f30718bf6b1fb28">
         <dex dex="C:\Users\shioya\AndroidStudioProjects\Agent_Support\app\build\intermediates\transforms\dex\debug\folders\1000\10\instant-run-bootstrap_0543e23e10687376ba9b0495745d4edda4d1e1e2\classes.dex" />
     </item>
     <item
         is-multidex="true"
-        jar="C:\Users\shioya\AndroidStudioProjects\Agent_Support\app\build\intermediates\exploded-aar\com.android.support\support-core-ui\25.1.1\jars\classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.2"
-        sha1="3e04ac8ca644ea7baddf6fdcf72e15c79e9df94a">
-        <dex dex="C:\Users\shioya\AndroidStudioProjects\Agent_Support\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-core-ui-25.1.1_f3f1131f9de952d8ef5540d754fa31f3f87bf3ad\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Users\shioya\AndroidStudioProjects\Agent_Support\app\build\intermediates\exploded-aar\com.android.support\support-media-compat\25.1.1\jars\classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.2"
-        sha1="7bde4c34162092e0a77e7f12dc85ed77c484cf5c">
-        <dex dex="C:\Users\shioya\AndroidStudioProjects\Agent_Support\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-media-compat-25.1.1_86d5aeaf02fc84ebae0b448eeec075d285bd90cd\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Users\shioya\AndroidStudioProjects\Agent_Support\app\build\intermediates\exploded-aar\com.android.support\animated-vector-drawable\25.1.1\jars\classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.2"
-        sha1="0d191c1a09e4892d059e5ce749e4ad4e08129e35">
-        <dex dex="C:\Users\shioya\AndroidStudioProjects\Agent_Support\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-animated-vector-drawable-25.1.1_fce66e9007c9c9c891811acc0b18b56d7a47a985\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Users\shioya\AndroidStudioProjects\Agent_Support\app\build\intermediates\exploded-aar\com.android.support\support-compat\25.1.1\jars\classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.2"
-        sha1="02741d05d4b697fba5e279e9881aaa1da0ca7c7f">
-        <dex dex="C:\Users\shioya\AndroidStudioProjects\Agent_Support\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-compat-25.1.1_5ec2c96dde19ef15d4d7ef48d4fd3d1c96d1d022\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Users\shioya\AndroidStudioProjects\Agent_Support\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\25.1.1\jars\classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.2"
-        sha1="ecb496cc08dd52551fc5ec6db3bc0632e95a89bb">
-        <dex dex="C:\Users\shioya\AndroidStudioProjects\Agent_Support\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-appcompat-v7-25.1.1_7e4326873da115ad64e607f7dd2688abe211d64d\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Users\shioya\AndroidStudioProjects\Agent_Support\app\build\intermediates\exploded-aar\com.android.support\support-v4\25.1.1\jars\classes.jar"
+        jar="C:\Users\shioya\AndroidStudioProjects\Agent_Support\app\build\intermediates\exploded-aar\com.android.support\support-v4\25.2.0\jars\classes.jar"
         jumboMode="true"
         optimize="true"
         revision="25.0.2"
         sha1="d7c42c80f6509b9ea4db28ca7859ffae08ec5741">
-        <dex dex="C:\Users\shioya\AndroidStudioProjects\Agent_Support\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-v4-25.1.1_8d5608c499cb76986d3a9b8c0f5d638070b93e3b\classes.dex" />
+        <dex dex="C:\Users\shioya\AndroidStudioProjects\Agent_Support\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-v4-25.2.0_0142ed745099071e182a419748d1d03a73babdf2\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\shioya\AndroidStudioProjects\Agent_Support\app\build\intermediates\exploded-aar\com.android.support\recyclerview-v7\25.2.0\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="152de8da301561dcb0946471697a420d8f7a68c5">
+        <dex dex="C:\Users\shioya\AndroidStudioProjects\Agent_Support\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-recyclerview-v7-25.2.0_e2bbed6d7720130a2697f05830fc978f5a1cb654\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\shioya\AndroidStudioProjects\Agent_Support\app\build\intermediates\exploded-aar\com.android.support\support-core-utils\25.2.0\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="e820b7be8c035dd522da4bc822e8a76c8e27921a">
+        <dex dex="C:\Users\shioya\AndroidStudioProjects\Agent_Support\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-core-utils-25.2.0_0618ff23c3a3837ed5bcf5f85e92639412a1ff74\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\shioya\AndroidStudioProjects\Agent_Support\app\build\intermediates\exploded-aar\com.android.support\support-media-compat\25.2.0\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="ee394a892dd21c03a528139c1e8d4e0e1264ac84">
+        <dex dex="C:\Users\shioya\AndroidStudioProjects\Agent_Support\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-media-compat-25.2.0_0792ae449943eca61ad8fcec8786e066e7b61e0e\classes.dex" />
     </item>
 
 </items>

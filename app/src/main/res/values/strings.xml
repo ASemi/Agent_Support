@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">Agent_Support</string>
+    <string name="press_start">PRESS START</string>
+    <string name="menu">メニュー</string>
+    <string name="card_list">カード一覧</string>
+    <string name="agent">エージェント</string>
+    <string name="strategy">諜略</string>
+    <string name="back">戻る</string>
 </resources>

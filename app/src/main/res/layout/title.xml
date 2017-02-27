@@ -11,12 +11,13 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:background="#000000"
             android:id="@+id/linearLayoutBack"
             android:orientation="vertical">
             <ImageButton
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@drawable/title_sample"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/title_sample"
                 android:id="@+id/titleBack"
                 android:scaleType="fitXY"/>
         </LinearLayout>
@@ -31,7 +32,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/press_start"
-                android:textColor="#000000"
+                android:textColor="#ffffff"
                 android:id="@+id/titleText"
                 android:textSize="30sp"/>
 

@@ -30,9 +30,9 @@ public class PepperActivity extends Activity implements View.OnClickListener {
         res = getResources();
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP_MR1) {
-            drawable = ResourcesCompat.getDrawable(res, R.drawable.cardsample1, null);
+            drawable = ResourcesCompat.getDrawable(res, R.drawable.pepper_s, null);
         } else {
-            drawable = res.getDrawable(R.drawable.cardsample1);
+            drawable = res.getDrawable(R.drawable.pepper_s);
         }
 
         findViewById(R.id.backButton).setOnClickListener(this);
@@ -50,16 +50,10 @@ public class PepperActivity extends Activity implements View.OnClickListener {
                 finish();
                 break;
             case R.id.iden_success:
-                pepper_list[iden_counter].setImageDrawable(drawable);
-                if (iden_counter < 5) {
-                    iden_counter++;
-                }
+                pepper_list[iden_counter++].setImageDrawable(drawable);
                 break;
             case R.id.minus1:
-                pepper_list[iden_counter].setImageDrawable(null);
-                if (iden_counter > 0) {
-                    iden_counter--;
-                }
+                pepper_list[--iden_counter].setImageDrawable(null);
                 break;
         }
     }

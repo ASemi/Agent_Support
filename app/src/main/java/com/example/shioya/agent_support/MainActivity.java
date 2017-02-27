@@ -23,8 +23,8 @@ public class MainActivity extends Activity implements View.OnClickListener{
     private RecyclerView.Adapter adapter;
     private RecyclerView.LayoutManager layoutManager;
     WebView webView;
-    ArrayList<String> agents = new ArrayList<>(Arrays.asList("cardsample1", "cardsample2", "cardsample3"));
-    ArrayList<String> strategies = new ArrayList<>(Arrays.asList("cardsample3", "cardsample2", "cardsample1"));
+    ArrayList<String> agents = new ArrayList<>(Arrays.asList("speaker","tank","obliqueshadow","titanium","larklady","swanmaiden","huntress","blackhand","nightmare","baronbrumaire","markjunior","staticelectricity","viper","angel","savageassassin","doubleknight","kwonkiku","darkflow","diamondman","perfume","toughgun","redblade","alias","backfire","trinity","j","detective"));
+    ArrayList<String> strategies = new ArrayList<>(Arrays.asList("prove","intercept","trap","transfer","lockon","decode","distribute","delete","counteract"));
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

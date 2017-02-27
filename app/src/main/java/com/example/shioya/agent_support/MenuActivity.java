@@ -28,7 +28,11 @@ public class MenuActivity extends Activity implements View.OnClickListener {
             case R.id.menuButton1:
                 Intent intentCard = new Intent(this, MainActivity.class);
                 startActivity(intentCard);
-
+                break;
+            case R.id.menuButton2:
+                Intent intentTools = new Intent(this, PepperActivity.class);
+                startActivity(intentTools);
+                break;
         }
     }
 }

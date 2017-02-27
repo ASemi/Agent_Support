@@ -14,6 +14,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class MainActivity extends Activity implements View.OnClickListener{
 
@@ -22,20 +23,8 @@ public class MainActivity extends Activity implements View.OnClickListener{
     private RecyclerView.Adapter adapter;
     private RecyclerView.LayoutManager layoutManager;
     WebView webView;
-    ArrayList<String> agents = new ArrayList<String>() {
-        {
-            add("cardsample1");
-            add("cardsample2");
-            add("cardsample3");
-        }
-    };
-    ArrayList<String> strategies = new ArrayList<String>() {
-        {
-            add("cardsample3");
-            add("cardsample2");
-            add("cardsample1");
-        }
-    };
+    ArrayList<String> agents = new ArrayList<>(Arrays.asList("cardsample1", "cardsample2", "cardsample3"));
+    ArrayList<String> strategies = new ArrayList<>(Arrays.asList("cardsample3", "cardsample2", "cardsample1"));
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,6 +52,7 @@ public class MainActivity extends Activity implements View.OnClickListener{
         webView.getSettings().setLoadWithOverviewMode(true);
         webView.getSettings().setUseWideViewPort(true);
         webView.getSettings().setBuiltInZoomControls(true); // ピンチアウトの設定
+        webView.loadUrl("file:///android_asset/"+agents.get(0)+".html");
 
     }
 
@@ -126,7 +116,6 @@ public class MainActivity extends Activity implements View.OnClickListener{
             return list.size();
         }
 
-        //
     }
 
     public static class ItemViewHolder extends RecyclerView.ViewHolder{

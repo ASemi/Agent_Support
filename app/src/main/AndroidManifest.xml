@@ -23,6 +23,9 @@
         <activity
             android:name=".MenuActivity"
             android:screenOrientation="landscape" />
+        <activity
+            android:name=".PepperActivity"
+            android:screenOrientation="landscape" />
     </application>
 
 </manifest>

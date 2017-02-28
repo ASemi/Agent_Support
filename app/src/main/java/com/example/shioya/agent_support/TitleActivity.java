@@ -6,9 +6,14 @@ import android.animation.ObjectAnimator;
 import android.annotation.TargetApi;
 import android.app.Activity;
 import android.content.Intent;
+import android.content.res.Resources;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
+import android.support.v4.content.res.ResourcesCompat;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.TextView;
@@ -23,14 +28,15 @@ public class TitleActivity extends Activity implements View.OnClickListener {
     private Handler mHandler = new Handler();
     private ScheduledExecutorService mScheduledExecutor;
     private TextView PressStart;
+    private ImageButton imageButton;
+    private Bitmap mBitmap;
+    Resources res;
+    Drawable drawable;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.title);
-        findViewById(R.id.titleBack).setOnClickListener(this);
-        PressStart = (TextView)findViewById(R.id.titleText);
-        startMeasure();
     }
 
     @Override
@@ -42,6 +48,30 @@ public class TitleActivity extends Activity implements View.OnClickListener {
                 startActivity(intentMenu);
                 break;
         }
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        imageButton = (ImageButton)findViewById(R.id.titleBack);
+        imageButton.setOnClickListener(this);
+        PressStart = (TextView)findViewById(R.id.titleText);
+
+        res = getResources();
+        mBitmap = BitmapFactory.decodeResource(res, R.drawable.title_sample);
+        imageButton.setImageBitmap(mBitmap);
+
+        startMeasure();
+    }
+
+    @Override
+    public void onStop(){
+        if(mBitmap != null && !mBitmap.isRecycled()) {
+            mBitmap.recycle();
+            mBitmap = null;
+            imageButton.setOnClickListener(null);
+        }
+        super.onStop();
     }
 
     // "PRESS START"の点滅

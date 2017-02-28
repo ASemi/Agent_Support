@@ -50,10 +50,14 @@ public class PepperActivity extends Activity implements View.OnClickListener {
                 finish();
                 break;
             case R.id.iden_success:
-                pepper_list[iden_counter++].setImageDrawable(drawable);
+                if (iden_counter < 6) {
+                    pepper_list[iden_counter++].setImageDrawable(drawable);
+                }
                 break;
             case R.id.minus1:
-                pepper_list[--iden_counter].setImageDrawable(null);
+                if (iden_counter > 0) {
+                    pepper_list[--iden_counter].setImageDrawable(null);
+                }
                 break;
         }
     }

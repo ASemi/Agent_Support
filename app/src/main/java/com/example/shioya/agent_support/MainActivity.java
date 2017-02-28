@@ -23,8 +23,8 @@ public class MainActivity extends Activity implements View.OnClickListener{
     private RecyclerView.Adapter adapter;
     private RecyclerView.LayoutManager layoutManager;
     WebView webView;
-    ArrayList<String> agents = new ArrayList<>(Arrays.asList("speaker","tank","obliqueshadow","titanium","larklady","swanmaiden","huntress","blackhand","nightmare","baronbrumaire","markjunior","staticelectricity","viper","angel","savageassassin","doubleknight","kwonkiku","darkflow","diamondman","perfume","toughgun","redblade","alias","backfire","trinity","j","detective"));
-    ArrayList<String> strategies = new ArrayList<>(Arrays.asList("prove","intercept","trap","transfer","lockon","decode","distribute","delete","counteract"));
+    Agents agents = new Agents();
+    Strategies strategies = new Strategies();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,20 +40,6 @@ public class MainActivity extends Activity implements View.OnClickListener{
         btn_strategy.setOnClickListener(this);
         btn_strategy.setEnabled(true);
 
-        mRecyclerView = (RecyclerView)findViewById(R.id.recyclerView_card);
-        mRecyclerView.setHasFixedSize(true);
-        layoutManager = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
-        mRecyclerView.setLayoutManager(layoutManager);
-        adapter = new MyAdapter(agents);
-        mRecyclerView.setAdapter(adapter);
-
-
-        webView = (WebView)findViewById(R.id.webView);
-        webView.getSettings().setLoadWithOverviewMode(true);
-        webView.getSettings().setUseWideViewPort(true);
-        webView.getSettings().setBuiltInZoomControls(true); // ピンチアウトの設定
-        webView.loadUrl("file:///android_asset/"+agents.get(0)+".html");
-
     }
 
     @Override
@@ -66,16 +52,50 @@ public class MainActivity extends Activity implements View.OnClickListener{
             case R.id.agentButton:
                 btn_agent.setEnabled(false);
                 btn_strategy.setEnabled(true);
-                adapter = new MyAdapter(agents);
+                mRecyclerView.setAdapter(null);
+                adapter = null;
+                adapter = new MyAdapter(agents.name);
                 mRecyclerView.setAdapter(adapter);
                 break;
             case R.id.strategyButton:
                 btn_agent.setEnabled(true);
                 btn_strategy.setEnabled(false);
-                adapter = new MyAdapter(strategies);
+                mRecyclerView.setAdapter(null);
+                adapter = null;
+                adapter = new MyAdapter(strategies.name);
                 mRecyclerView.setAdapter(adapter);
                 break;
         }
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        mRecyclerView = (RecyclerView)findViewById(R.id.recyclerView_card);
+        mRecyclerView.setHasFixedSize(true);
+        layoutManager = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
+        mRecyclerView.setLayoutManager(layoutManager);
+        adapter = new MyAdapter(agents.name);
+        mRecyclerView.setAdapter(adapter);
+
+        webView = (WebView)findViewById(R.id.webView);
+        webView.getSettings().setLoadWithOverviewMode(true);
+        webView.getSettings().setUseWideViewPort(true);
+        webView.getSettings().setBuiltInZoomControls(true); // ピンチアウトの設定
+        webView.loadUrl("file:///android_asset/"+agents.name.get(0)+".html");
+    }
+
+    @Override
+    public void onStop() {
+        if (mRecyclerView != null) {
+            mRecyclerView.setAdapter(null);
+            mRecyclerView = null;
+            adapter = null;
+        }
+        if (webView != null) {
+            webView = null;
+        }
+        super.onStop();
     }
 
     private class MyAdapter extends RecyclerView.Adapter<ItemViewHolder> {

@@ -37,6 +37,7 @@ public class TitleActivity extends Activity implements View.OnClickListener {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.title);
+
     }
 
     @Override

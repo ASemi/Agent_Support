@@ -21,6 +21,19 @@ public class VoiceActivity extends Activity implements View.OnClickListener, Tex
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.samplevoice);
+        findViewById(R.id.backButton).setOnClickListener(this);
+        findViewById(R.id.buttonKiyoi).setOnClickListener(this);
+        findViewById(R.id.buttonJuntaku).setOnClickListener(this);
+        findViewById(R.id.buttonOnepoint).setOnClickListener(this);
+        findViewById(R.id.buttonSibui).setOnClickListener(this);
+        findViewById(R.id.buttonImnot).setOnClickListener(this);
+        findViewById(R.id.buttonKyohi).setOnClickListener(this);
+        findViewById(R.id.buttonGokuhi).setOnClickListener(this);
+        findViewById(R.id.buttonSinten).setOnClickListener(this);
+        findViewById(R.id.buttonKoukai).setOnClickListener(this);
+        findViewById(R.id.buttonHosoku).setOnClickListener(this);
+        findViewById(R.id.buttonSyomei).setOnClickListener(this);
+        findViewById(R.id.buttonGodou).setOnClickListener(this);
 
         // TTSインスタンスの生成
         tts = new TextToSpeech(this, this);

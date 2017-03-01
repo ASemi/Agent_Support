@@ -125,6 +125,7 @@ public class MainActivity extends Activity implements View.OnClickListener{
 
             // imageViewにカード画像を入れる
             // サイズの縮小
+            /*
             opt.inJustDecodeBounds = true;
             BitmapFactory.decodeResource(getResources(), getResources().getIdentifier(data, "drawable", getPackageName()), opt);
 
@@ -135,6 +136,7 @@ public class MainActivity extends Activity implements View.OnClickListener{
             int scaleH = opt.outHeight / viewH;
 
             opt.inSampleSize = Math.max(scaleW, scaleH);
+            */
 
             opt.inJustDecodeBounds = false;
             Bitmap mBitmap = BitmapFactory.decodeResource(getResources(), getResources().getIdentifier(data, "drawable", getPackageName()), opt);

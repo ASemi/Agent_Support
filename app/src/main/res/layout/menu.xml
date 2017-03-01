@@ -45,13 +45,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:layout_marginTop="70dp"
         android:orientation="vertical">
 
         <ImageButton
             android:layout_width="400dp"
             android:layout_height="70dp"
-            android:layout_marginBottom="50dp"
             android:background="@drawable/menubar1"
             android:id="@+id/menuButton1"/>
 
@@ -60,6 +58,12 @@
             android:layout_height="70dp"
             android:background="@drawable/menubar2"
             android:id="@+id/menuButton2"/>
+
+        <ImageButton
+            android:layout_width="400dp"
+            android:layout_height="70dp"
+            android:background="@drawable/menubar1"
+            android:id="@+id/menuButton3"/>
     </LinearLayout>
 
 

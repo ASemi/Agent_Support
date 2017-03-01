@@ -1,6 +1,8 @@
 package com.example.shioya.agent_support;
 
 import android.app.Activity;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -22,6 +24,7 @@ public class MainActivity extends Activity implements View.OnClickListener{
     private RecyclerView mRecyclerView;
     private RecyclerView.Adapter adapter;
     private RecyclerView.LayoutManager layoutManager;
+    BitmapFactory.Options opt = new BitmapFactory.Options();
     WebView webView;
     Agents agents = new Agents();
     Strategies strategies = new Strategies();
@@ -120,8 +123,23 @@ public class MainActivity extends Activity implements View.OnClickListener{
         public void onBindViewHolder(ItemViewHolder holder, int position) {
             final String data = list.get(position);
 
-            //imageViewにカード画像を入れる
-            holder.imageView.setImageResource(getResources().getIdentifier(data, "drawable", getPackageName()));
+            // imageViewにカード画像を入れる
+            // サイズの縮小
+            opt.inJustDecodeBounds = true;
+            BitmapFactory.decodeResource(getResources(), getResources().getIdentifier(data, "drawable", getPackageName()), opt);
+
+            int viewW = holder.imageView.getWidth();
+            int viewH = holder.imageView.getHeight();
+
+            int scaleW = opt.outWidth / viewW;
+            int scaleH = opt.outHeight / viewH;
+
+            opt.inSampleSize = Math.max(scaleW, scaleH);
+
+            opt.inJustDecodeBounds = false;
+            Bitmap mBitmap = BitmapFactory.decodeResource(getResources(), getResources().getIdentifier(data, "drawable", getPackageName()), opt);
+
+            holder.imageView.setImageBitmap(mBitmap);
             holder.imageView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {

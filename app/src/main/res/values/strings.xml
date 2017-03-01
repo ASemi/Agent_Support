@@ -8,5 +8,18 @@
     <string name="pepper_iden">ペッパー識別</string>
     <string name="iden_success">識別成功</string>
     <string name="minus1">１体減らす</string>
+    <string name="voice">音声</string>
+    <string name="kiyoi">清い</string>
+    <string name="juntaku">潤沢</string>
+    <string name="onepoint">１ポイント</string>
+    <string name="sibui">渋い</string>
+    <string name="imnot">私は違う</string>
+    <string name="kyohi">拒否</string>
+    <string name="gokuhi">極秘</string>
+    <string name="sinten">親展</string>
+    <string name="koukai">公開</string>
+    <string name="syomei">証明</string>
+    <string name="hosoku">捕捉</string>
+    <string name="godou">誤導</string>
     <string name="back">戻る</string>
 </resources>

@@ -26,6 +26,8 @@ public class VoiceActivity extends Activity implements View.OnClickListener, Tex
         findViewById(R.id.buttonJuntaku).setOnClickListener(this);
         findViewById(R.id.buttonOnepoint).setOnClickListener(this);
         findViewById(R.id.buttonSibui).setOnClickListener(this);
+        findViewById(R.id.buttonNice).setOnClickListener(this);
+        findViewById(R.id.buttonReach).setOnClickListener(this);
         findViewById(R.id.buttonImnot).setOnClickListener(this);
         findViewById(R.id.buttonKyohi).setOnClickListener(this);
         findViewById(R.id.buttonGokuhi).setOnClickListener(this);
@@ -69,6 +71,12 @@ public class VoiceActivity extends Activity implements View.OnClickListener, Tex
             case R.id.buttonSibui:
                 speechText("渋い");
                 break;
+            case R.id.buttonNice:
+                speechText("ナイスー");
+                break;
+            case R.id.buttonReach:
+                speechText("リーチ");
+                break;
             case R.id.buttonImnot:
                 speechText("私は違う");
                 break;
@@ -91,7 +99,7 @@ public class VoiceActivity extends Activity implements View.OnClickListener, Tex
                 speechText("捕捉");
                 break;
             case R.id.buttonGodou:
-                speechText("誤導");
+                speechText("ごどう");
                 break;
         }
 

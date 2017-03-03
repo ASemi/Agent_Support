@@ -27,7 +27,11 @@
         <activity
             android:name=".PepperActivity"
             android:screenOrientation="landscape" />
-        <activity android:name=".VoiceActivity"
+        <activity
+            android:name=".VoiceActivity"
+            android:screenOrientation="landscape" />
+        <activity
+            android:name=".Agent9Activity"
             android:screenOrientation="landscape" />
     </application>
 

@@ -78,6 +78,20 @@
                 android:layout_gravity="center"
                 android:text="@string/sibui"
                 android:id="@+id/buttonSibui" />
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="@string/nice"
+                android:id="@+id/buttonNice" />
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="@string/reach"
+                android:id="@+id/buttonReach" />
         </LinearLayout>
 
         <LinearLayout

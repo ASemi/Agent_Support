@@ -9,11 +9,9 @@ import android.content.Intent;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
-import android.support.v4.content.res.ResourcesCompat;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.TextView;
@@ -31,7 +29,6 @@ public class TitleActivity extends Activity implements View.OnClickListener {
     private ImageButton imageButton;
     private Bitmap mBitmap;
     Resources res;
-    Drawable drawable;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

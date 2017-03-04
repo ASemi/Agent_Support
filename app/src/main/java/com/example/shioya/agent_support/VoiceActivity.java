@@ -2,12 +2,22 @@ package com.example.shioya.agent_support;
 
 import android.annotation.TargetApi;
 import android.app.Activity;
+import android.graphics.Color;
+import android.graphics.Typeface;
+import android.graphics.drawable.ColorDrawable;
+import android.graphics.drawable.GradientDrawable;
+import android.media.AudioAttributes;
+import android.media.AudioManager;
+import android.media.SoundPool;
 import android.os.Build;
 import android.speech.tts.TextToSpeech;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.SpannableString;
+import android.text.style.StyleSpan;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 
 import java.util.HashMap;
 
@@ -15,6 +25,12 @@ public class VoiceActivity extends Activity implements View.OnClickListener, Tex
 
     private TextToSpeech tts;
     private static final String TAG = "TestTTS";
+    double rand_select = 1.0;
+    SoundPool soundPool;
+    Button buttonOne;
+    int soundOne;
+    String defaultString="1ポイント";
+    SpannableString spanString;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,7 +40,8 @@ public class VoiceActivity extends Activity implements View.OnClickListener, Tex
         findViewById(R.id.backButton).setOnClickListener(this);
         findViewById(R.id.buttonKiyoi).setOnClickListener(this);
         findViewById(R.id.buttonJuntaku).setOnClickListener(this);
-        findViewById(R.id.buttonOnepoint).setOnClickListener(this);
+        buttonOne = (Button)findViewById(R.id.buttonOnepoint);
+        buttonOne.setOnClickListener(this);
         findViewById(R.id.buttonSibui).setOnClickListener(this);
         findViewById(R.id.buttonNice).setOnClickListener(this);
         findViewById(R.id.buttonReach).setOnClickListener(this);
@@ -39,6 +56,12 @@ public class VoiceActivity extends Activity implements View.OnClickListener, Tex
 
         // TTSインスタンスの生成
         tts = new TextToSpeech(this, this);
+
+        // soundpoolインスタンス
+        soundPool = buildSoundPool();
+        soundOne = soundPool.load(this, R.raw.onepoints, 1);
+        spanString = new SpannableString(defaultString);
+        spanString.setSpan(new StyleSpan(Typeface.BOLD), 0, spanString.length(), 0);
 
     }
 
@@ -66,7 +89,17 @@ public class VoiceActivity extends Activity implements View.OnClickListener, Tex
                 speechText("潤沢");
                 break;
             case R.id.buttonOnepoint:
-                speechText("わんぽーいんつ");
+                if (rand_select <= 0.1) {
+                    soundPool.play(soundOne, 1.0f, 1.0f, 0, 0, 1);
+                } else {
+                    speechText("わんぽーいんつ");
+                }
+                rand_select = Math.random();
+                if (rand_select <= 0.1) {
+                    buttonOne.setText(spanString);
+                } else {
+                    buttonOne.setText(defaultString);
+                }
                 break;
             case R.id.buttonSibui:
                 speechText("渋い");
@@ -103,6 +136,20 @@ public class VoiceActivity extends Activity implements View.OnClickListener, Tex
                 break;
         }
 
+    }
+
+    @SuppressWarnings("deprecation")
+    @TargetApi(Build.VERSION_CODES.LOLLIPOP)
+    private SoundPool buildSoundPool() {
+        SoundPool pool;
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.LOLLIPOP) {
+            pool = new SoundPool(1, AudioManager.STREAM_MUSIC, 0);
+        } else {
+            AudioAttributes attr = new AudioAttributes.Builder().setUsage(AudioAttributes.USAGE_MEDIA).setContentType(AudioAttributes.CONTENT_TYPE_MUSIC).build();
+            pool = new SoundPool.Builder().setAudioAttributes(attr).setMaxStreams(1).build();
+        }
+
+        return  pool;
     }
 
     private void speechText(String string) {
@@ -142,10 +189,13 @@ public class VoiceActivity extends Activity implements View.OnClickListener, Tex
         tts.speak(string, TextToSpeech.QUEUE_FLUSH, null, utteranceId);
     }
 
+    @Override
     protected void onDestroy() {
         super.onDestroy();
         if (null != tts) {
             tts.shutdown();
         }
     }
+
+
 }

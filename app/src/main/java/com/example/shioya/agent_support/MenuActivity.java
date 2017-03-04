@@ -41,15 +41,17 @@ public class MenuActivity extends Activity implements View.OnClickListener {
 
         opt.inJustDecodeBounds = true;
         BitmapFactory.decodeResource(getResources(), R.drawable.menucardlist, opt);
-        scaleW = opt.outWidth / 400;
-        scaleH = opt.outHeight / 70;
+
+        scaleW = opt.outWidth / 150;
+        scaleH = opt.outHeight / 30;
         opt.inSampleSize = Math.max(scaleW, scaleH);
+
 
     }
 
     @Override
-    public void onResume() {
-        super.onResume();
+    public void onWindowFocusChanged(boolean hasFocus) {
+        super.onWindowFocusChanged(hasFocus);
         opt.inJustDecodeBounds = false;
         mBitmap1 = BitmapFactory.decodeResource(getResources(), R.drawable.menucardlist, opt);
         mBitmap2 = BitmapFactory.decodeResource(getResources(), R.drawable.menupepper, opt);
@@ -60,10 +62,12 @@ public class MenuActivity extends Activity implements View.OnClickListener {
         imageButton2.setImageBitmap(mBitmap2);
         imageButton3.setImageBitmap(mBitmap3);
         imageButton4.setImageBitmap(mBitmap4);
+
     }
 
     @Override
     public void onStop() {
+        super.onStop();
         mBitmap1.recycle();
         mBitmap2.recycle();
         mBitmap3.recycle();
@@ -72,8 +76,6 @@ public class MenuActivity extends Activity implements View.OnClickListener {
         imageButton2.setImageBitmap(null);
         imageButton3.setImageBitmap(null);
         imageButton4.setImageBitmap(null);
-
-        super.onStop();
     }
 
 

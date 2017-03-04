@@ -33,6 +33,9 @@
         <activity
             android:name=".Agent9Activity"
             android:screenOrientation="landscape" />
+        <activity
+            android:name=".AgentSelectActivity"
+            android:screenOrientation="landscape"/>
     </application>
 
 </manifest>

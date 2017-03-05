@@ -11,10 +11,13 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.PopupMenu;
 
+import java.util.Arrays;
+
 public class Agent9Activity extends Activity implements View.OnClickListener {
 
     ImageView[]agent_imglist = new ImageView[9];
     Bitmap[]bitmaps = new Bitmap[9];
+    String[]agent_selected = new String[9];
     private static final int[]REQUEST_CODE = {1, 2, 3, 4, 5, 6, 7, 8, 9};
     int i;
     BitmapFactory.Options opt = new BitmapFactory.Options();
@@ -46,29 +49,9 @@ public class Agent9Activity extends Activity implements View.OnClickListener {
     @Override
     public void onClick(View v) {
         int id = v.getId();
-        int j = 0;
+        int j;
         PopupMenu popup = new PopupMenu(this, v);
         popup.getMenuInflater().inflate(R.menu.popup, popup.getMenu());
-        /*
-        switch (id) {
-            case (R.id.agentImage1):
-                popup.show();
-                popup.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
-                    @Override
-                    public boolean onMenuItemClick(MenuItem item) {
-                        switch (item.getItemId()) {
-                            case R.id.popselect:
-                                toAgentSelect(0);
-                                break;
-                            case R.id.popdetail:
-                                break;
-                        }
-                        return false;
-                    }
-                });
-
-        }
-        */
         if(id == R.id.backButton) {
             finish();
         } else {
@@ -87,6 +70,7 @@ public class Agent9Activity extends Activity implements View.OnClickListener {
                                     break;
                                 case R.id.popdetail:
                                     //詳細
+                                    toAgentDetail(tmp);
                                     break;
                             }
                             return false;
@@ -100,11 +84,26 @@ public class Agent9Activity extends Activity implements View.OnClickListener {
 
     }
 
+    // エージェント選択アクティビティへの遷移
     private void toAgentSelect(int j) {
         Intent intent = new Intent(this, AgentSelectActivity.class);
         startActivityForResult(intent, REQUEST_CODE[j]);
     }
 
+    // エージェント詳細アクティビティへの遷移
+    private void toAgentDetail(int j) {
+        if (agent_selected[j] == null ) {
+            return;
+        }
+        final String agent = agent_selected[j];
+        Intent intent = new Intent(this, AgentDetailActivity.class);
+        intent.putExtra("name", agent);
+        startActivity(intent);
+
+    }
+
+
+    // 選択アクティビティから戻ってきたときに呼ばれる関数
     @Override
     protected void onActivityResult(int requestcode, int resultcode, Intent data) {
         super.onActivityResult(requestcode, resultcode, data);
@@ -126,6 +125,7 @@ public class Agent9Activity extends Activity implements View.OnClickListener {
                 // 9枚のどれから戻ってきたか
                 bitmaps[j] = BitmapFactory.decodeResource(getResources(), getResources().getIdentifier(result, "drawable", getPackageName()), opt);
                 agent_imglist[j].setImageBitmap(bitmaps[j]);
+                agent_selected[j] = result;
                 return;
             }
         }

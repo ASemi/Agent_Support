@@ -35,7 +35,11 @@
             android:screenOrientation="landscape" />
         <activity
             android:name=".AgentSelectActivity"
-            android:screenOrientation="landscape"/>
+            android:screenOrientation="landscape" />
+        <activity
+            android:name=".AgentDetailActivity"
+            android:screenOrientation="landscape"
+            android:theme="@style/AppTheme"/>
     </application>
 
 </manifest>

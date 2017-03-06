@@ -110,7 +110,7 @@ public class Agent9Activity extends Activity implements View.OnClickListener {
         int j;
         Bundle resultBundle = data.getExtras();
 
-        if (resultcode != RESULT_OK) {
+        if(resultcode != RESULT_OK) {
             return;
         }
 

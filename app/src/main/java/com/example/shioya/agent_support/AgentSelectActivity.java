@@ -36,10 +36,13 @@ public class AgentSelectActivity extends Activity implements View.OnClickListene
         int id = v.getId();
         switch (id) {
             case R.id.backButton:
-                setResult(RESULT_CANCELED);
+                Intent intent = new Intent();
+                intent.putExtra("result", "agentback");
+                setResult(RESULT_CANCELED, intent);
+                finish();
                 break;
         }
-        finish();
+
 
     }
 

@@ -28,6 +28,7 @@ public class AgentDetailActivity extends Activity implements View.OnClickListene
         webView.getSettings().setLoadWithOverviewMode(true);
         webView.getSettings().setUseWideViewPort(true);
         webView.getSettings().setBuiltInZoomControls(true); // ピンチアウトの設定
+        webView.getSettings().setDefaultTextEncodingName("UTF-8");
     }
 
     @Override

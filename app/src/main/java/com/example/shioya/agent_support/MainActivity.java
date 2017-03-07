@@ -85,6 +85,7 @@ public class MainActivity extends Activity implements View.OnClickListener{
         webView.getSettings().setLoadWithOverviewMode(true);
         webView.getSettings().setUseWideViewPort(true);
         webView.getSettings().setBuiltInZoomControls(true); // ピンチアウトの設定
+        webView.getSettings().setDefaultTextEncodingName("UTF-8");
         webView.loadUrl("file:///android_asset/"+agents.name.get(0)+".html");
     }
 

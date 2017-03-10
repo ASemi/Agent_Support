@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Agent_Support</string>
+    <string name="app_name">エーサポ</string>
     <string name="press_start">PRESS START</string>
     <string name="menu">メニュー</string>
     <string name="card_list">カード一覧</string>
@@ -9,6 +9,7 @@
     <string name="pop_select">選択</string>
     <string name="pop_detail">詳細</string>
     <string name="pop_cancel">キャンセル</string>
+    <string name="search">絞り込み</string>
     <string name="pepper_iden">ペッパー識別</string>
     <string name="iden_success">識別成功</string>
     <string name="minus1">１体減らす</string>

@@ -21,7 +21,9 @@ public class AgentSelectActivity extends Activity implements View.OnClickListene
     private RecyclerView.Adapter adapter;
     private RecyclerView.LayoutManager layoutManager;
     BitmapFactory.Options opt = new BitmapFactory.Options();
-    Agents agents = new Agents();
+
+    Agents agents;
+    private ArrayList<String> agentlist = agents.CreateFirst();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,7 +54,7 @@ public class AgentSelectActivity extends Activity implements View.OnClickListene
         mRecyclerView.setHasFixedSize(true);
         layoutManager = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
         mRecyclerView.setLayoutManager(layoutManager);
-        adapter = new AgentSelectActivity.MyAdapter(agents.name);
+        adapter = new AgentSelectActivity.MyAdapter(agentlist);
         mRecyclerView.setAdapter(adapter);
     }
 

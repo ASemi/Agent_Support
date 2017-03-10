@@ -18,6 +18,10 @@ import android.text.style.StyleSpan;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.SeekBar;
+import android.widget.TextView;
+
+import org.w3c.dom.Text;
 
 import java.util.HashMap;
 
@@ -31,6 +35,12 @@ public class VoiceActivity extends Activity implements View.OnClickListener, Tex
     int soundOne;
     String defaultString="1ポイント";
     SpannableString spanString;
+    private SeekBar pitchseekBar;
+    private SeekBar speedseekBar;
+    private TextView pitchtext;
+    private TextView speedtext;
+    private float pitchnum = 1.0f;
+    private float speednum = 1.0f;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,6 +63,48 @@ public class VoiceActivity extends Activity implements View.OnClickListener, Tex
         findViewById(R.id.buttonHosoku).setOnClickListener(this);
         findViewById(R.id.buttonSyomei).setOnClickListener(this);
         findViewById(R.id.buttonGodou).setOnClickListener(this);
+
+        // シークバー周りの設定
+        pitchseekBar = (SeekBar)findViewById(R.id.pitchSeekBar);
+        speedseekBar = (SeekBar)findViewById(R.id.speedSeekBar);
+        pitchtext = (TextView)findViewById(R.id.pitchText);
+        speedtext = (TextView)findViewById(R.id.speedText);
+
+        pitchtext.setText(String.format("%.1f", getConvertedValue(pitchseekBar.getProgress())));
+        speedtext.setText(String.format("%.1f", getConvertedValue(speedseekBar.getProgress())));
+
+        pitchseekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+                // ツマミをドラッグしたときによばれる
+                pitchtext.setText(String.format("%.1f", getConvertedValue(pitchseekBar.getProgress())));
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {}
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+                // ツマミを離したときに呼ばれる
+                pitchnum = getConvertedValue(pitchseekBar.getProgress());
+            }
+        });
+
+        speedseekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+                speedtext.setText(String.format("%.1f", getConvertedValue(speedseekBar.getProgress())));
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {}
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+                speednum = getConvertedValue(speedseekBar.getProgress());
+            }
+        });
+
 
         // TTSインスタンスの生成
         tts = new TextToSpeech(this, this);
@@ -162,8 +214,8 @@ public class VoiceActivity extends Activity implements View.OnClickListener, Tex
             }
 
             if (null != tts) {
-                tts.setSpeechRate(1.0f);
-                tts.setPitch(1.0f);
+                tts.setSpeechRate(speednum);
+                tts.setPitch(pitchnum);
             }
 
             // Androidバージョンによって記法を若干かえる
@@ -195,6 +247,14 @@ public class VoiceActivity extends Activity implements View.OnClickListener, Tex
         if (null != tts) {
             tts.shutdown();
         }
+    }
+
+    // SeekBarの値をpitch, speec用のfloat値に変換
+    public float getConvertedValue(int intVal) {
+        int tmp = intVal + 1;    // 1<= tmp <= 20
+        float floatVal = 0.1f * tmp;
+
+        return floatVal;
     }
 
 

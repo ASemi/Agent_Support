@@ -16,4 +16,43 @@ public class Agents {
         "chainer", "psychopass", "goldhead", "neutral", "gamemaster", "duelist", "handstander", "smallspace", "filler", "momentsleep", "vitalityrecorder", "chairman", "amnesia",
         "tipsy", "pepper", "juggler", "kurosawa", "lifegamer", "sunflower", "fishcake", "host", "morpheus","trumpeter", "keyboarder", "julius", "fontjunkie", "sprincar", "blackpepper", "shellkeaper", "iphone");
     }
+
+
+    AgentName agentName;
+    AgentAttribute agentAttribute;
+    Gender gender;
+    AgentPackage agentPackage;
+
+    Agents(AgentName agentName) {
+        this.agentName = agentName;
+        this.agentAttribute = agentName.agentAttribute;
+        this.gender = agentName.gender;
+        this.agentPackage = agentName.agentPackage;
+    }
+
+    public ArrayList<String> CreateFirst() {
+        ArrayList<String> agentlist = new ArrayList<>();
+
+        for (AgentName agentName : AgentName.values()) {
+            agentlist.add(agentName.getName());
+        }
+
+        return agentlist;
+    }
+
+    public ArrayList<String> SetList(AgentPackage ap, Gender gen, AgentAttribute aa) {
+        ArrayList<String> agentlist = new ArrayList<>();
+
+        for (AgentName agentName : AgentName.values()) {
+            if (ap == agentName.agentPackage || ap == AgentPackage.ALL) {
+                if (gen == agentName.gender || gen == Gender.ALL) {
+                    if (aa == agentName.agentAttribute || aa == AgentAttribute.ALL) {
+                        agentlist.add(agentName.getName());
+                    }
+                }
+            }
+        }
+
+        return agentlist;
+    }
 }

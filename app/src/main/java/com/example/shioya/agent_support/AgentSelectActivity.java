@@ -22,8 +22,9 @@ public class AgentSelectActivity extends Activity implements View.OnClickListene
     private RecyclerView.LayoutManager layoutManager;
     BitmapFactory.Options opt = new BitmapFactory.Options();
 
-    Agents agents;
-    private ArrayList<String> agentlist = agents.CreateFirst();
+    private ArrayList<String> agentlist = Agents.CreateFirst();
+
+    private static final int REQUEST_CODE = 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,6 +32,14 @@ public class AgentSelectActivity extends Activity implements View.OnClickListene
         setContentView(R.layout.agent_select);
 
         findViewById(R.id.backButton).setOnClickListener(this);
+        findViewById(R.id.searchButton).setOnClickListener(this);
+
+        mRecyclerView = (RecyclerView) findViewById(R.id.recyclerView_card);
+        mRecyclerView.setHasFixedSize(true);
+        layoutManager = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
+        mRecyclerView.setLayoutManager(layoutManager);
+        adapter = new AgentSelectActivity.MyAdapter(agentlist);
+        mRecyclerView.setAdapter(adapter);
     }
 
     @Override
@@ -38,24 +47,17 @@ public class AgentSelectActivity extends Activity implements View.OnClickListene
         int id = v.getId();
         switch (id) {
             case R.id.backButton:
-                Intent intent = new Intent();
-                setResult(RESULT_CANCELED, intent);
+                Intent intent0 = new Intent();
+                setResult(RESULT_CANCELED, intent0);
                 finish();
+                break;
+            case R.id.searchButton:
+                Intent intent1 = new Intent(this, AgentFilterActivity.class);
+                startActivityForResult(intent1, REQUEST_CODE);
                 break;
         }
 
 
-    }
-
-    @Override
-    public void onResume() {
-        super.onResume();
-        mRecyclerView = (RecyclerView) findViewById(R.id.recyclerView_card);
-        mRecyclerView.setHasFixedSize(true);
-        layoutManager = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
-        mRecyclerView.setLayoutManager(layoutManager);
-        adapter = new AgentSelectActivity.MyAdapter(agentlist);
-        mRecyclerView.setAdapter(adapter);
     }
 
     @Override
@@ -120,5 +122,27 @@ public class AgentSelectActivity extends Activity implements View.OnClickListene
             super(v);
             imageView = (ImageView)v.findViewById(R.id.img_elem);
         }
+    }
+
+
+    @Override
+    protected void onActivityResult(int requestcode, int resultcode, Intent data) {
+        super.onActivityResult(requestcode, resultcode, data);
+
+        if (resultcode != RESULT_OK) {
+            return;
+        }
+
+        AgentPackage ap = (AgentPackage)data.getSerializableExtra("agentpackage");
+        Gender g = (Gender)data.getSerializableExtra("gender");
+        AgentAttribute aa = (AgentAttribute)data.getSerializableExtra("agentattribute");
+
+        ArrayList<String> filteredlist = Agents.SetList(ap, g, aa);
+
+        mRecyclerView.setAdapter(null);
+        adapter = null;
+        adapter = new MyAdapter(filteredlist);
+        mRecyclerView.setAdapter(adapter);
+
     }
 }

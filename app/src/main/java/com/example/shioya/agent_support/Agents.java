@@ -30,7 +30,7 @@ public class Agents {
         this.agentPackage = agentName.agentPackage;
     }
 
-    public ArrayList<String> CreateFirst() {
+    public static ArrayList<String> CreateFirst() {
         ArrayList<String> agentlist = new ArrayList<>();
 
         for (AgentName agentName : AgentName.values()) {
@@ -40,7 +40,7 @@ public class Agents {
         return agentlist;
     }
 
-    public ArrayList<String> SetList(AgentPackage ap, Gender gen, AgentAttribute aa) {
+    public static ArrayList<String> SetList(AgentPackage ap, Gender gen, AgentAttribute aa) {
         ArrayList<String> agentlist = new ArrayList<>();
 
         for (AgentName agentName : AgentName.values()) {

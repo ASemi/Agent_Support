@@ -57,9 +57,9 @@ enum AgentName {
     GOLDHEAD(AgentAttribute.SECRET, Gender.MALE, AgentPackage.AUGMENT),
     NEUTRAL(AgentAttribute.SECRET, Gender.MALE, AgentPackage.AUGMENT),
     GAMEMASTER(AgentAttribute.NORMAL, Gender.NONE, AgentPackage.AUGMENT),
-    DUELIST(AgentAttribute.NORMAL, Gender.FEMALE, AgentPackage.AUGMENT),
+    DUELIST(AgentAttribute.SECRET, Gender.FEMALE, AgentPackage.AUGMENT),
     HANDSTANDER(AgentAttribute.SECRET, Gender.MALE, AgentPackage.AUGMENT),
-    SMALLSPACE(AgentAttribute.NORMAL, Gender.FEMALE, AgentPackage.AUGMENT),
+    SMALLSPACE(AgentAttribute.SECRET, Gender.FEMALE, AgentPackage.AUGMENT),
     FILLER(AgentAttribute.NORMAL, Gender.MALE, AgentPackage.AUGMENT),
     MOMENTSLEEP(AgentAttribute.NORMAL, Gender.MALE, AgentPackage.AUGMENT),
     VITARITYRECORDER(AgentAttribute.NORMAL, Gender.MALE, AgentPackage.AUGMENT),
@@ -71,8 +71,8 @@ enum AgentName {
     KUROSAWA(AgentAttribute.PUBLIC, Gender.MALE, AgentPackage.AUGMENT),
     LIFEGAMER(AgentAttribute.SECRET, Gender.MALE, AgentPackage.AUGMENT),
     SUNFLOWER(AgentAttribute.SECRET, Gender.MALE, AgentPackage.AUGMENT),
-    FISHCAKE(AgentAttribute.NORMAL, Gender.NONE, AgentPackage.AUGMENT),
-    HOST(AgentAttribute.NORMAL, Gender.MALE, AgentPackage.AUGMENT),
+    FISHCAKE(AgentAttribute.SECRET, Gender.NONE, AgentPackage.AUGMENT),
+    HOST(AgentAttribute.SECRET, Gender.MALE, AgentPackage.AUGMENT),
     MORPHEUS(AgentAttribute.NORMAL, Gender.MALE, AgentPackage.AUGMENT),
     TRUMPETER(AgentAttribute.SECRET, Gender.MALE, AgentPackage.AUGMENT),
     KEYBOARDER(AgentAttribute.SECRET, Gender.FEMALE, AgentPackage.AUGMENT),
@@ -81,7 +81,10 @@ enum AgentName {
     SPRINCAR(AgentAttribute.PUBLIC, Gender.MALE, AgentPackage.AUGMENT),
     BLACKPEPPER(AgentAttribute.NORMAL, Gender.NONE, AgentPackage.AUGMENT),
     SHELLKEAPER(AgentAttribute.NORMAL, Gender.FEMALE, AgentPackage.AUGMENT),
-    IPHONE(AgentAttribute.SECRET, Gender.MALE, AgentPackage.AUGMENT);
+    IPHONE(AgentAttribute.SECRET, Gender.MALE, AgentPackage.AUGMENT),
+
+    // 初期化用
+    ALLFILTER(AgentAttribute.ALL, Gender.ALL, AgentPackage.ALL);
 
 
     public final AgentAttribute agentAttribute;

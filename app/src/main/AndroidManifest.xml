@@ -39,7 +39,11 @@
         <activity
             android:name=".AgentDetailActivity"
             android:screenOrientation="landscape"
-            android:theme="@style/AppTheme"/>
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".AgentFilterActivity"
+            android:screenOrientation="landscape"
+            android:theme="@style/AppTheme" />
     </application>
 
 </manifest>

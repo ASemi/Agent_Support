@@ -49,6 +49,7 @@ public class Agent9Activity extends Activity implements View.OnClickListener, Se
         setContentView(R.layout.agent_nine);
 
         findViewById(R.id.backButton).setOnClickListener(this);
+        findViewById(R.id.tovoiceButton).setOnClickListener(this);
 
         for (i=0; i<9; i++) {
             agent_side[i] = new AgentSide();
@@ -94,6 +95,9 @@ public class Agent9Activity extends Activity implements View.OnClickListener, Se
         popup.getMenuInflater().inflate(R.menu.popup, popup.getMenu());
         if(id == R.id.backButton) {
             finish();
+        } else if (id == R.id.tovoiceButton) {
+            Intent intent0 = new Intent(this, VoiceActivity.class);
+            startActivity(intent0);
         } else {
             for (j = 0; j < 9; j++) {
                 String strNo = Integer.toString(j + 1);

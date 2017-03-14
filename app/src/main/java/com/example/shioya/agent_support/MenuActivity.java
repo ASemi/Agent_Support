@@ -95,8 +95,8 @@ public class MenuActivity extends Activity implements View.OnClickListener {
                 startActivity(intentTools);
                 break;
             case R.id.menuButton3:
-                Intent intentVoices = new Intent(this, VoiceActivity.class);
-                startActivity(intentVoices);
+                Intent intentPoints = new Intent(this, PointActivity.class);
+                startActivity(intentPoints);
                 break;
             case R.id.menuButton4:
                 Intent intentAgent9 = new Intent(this, Agent9Activity.class);

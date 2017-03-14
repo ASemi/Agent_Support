@@ -48,6 +48,15 @@
     </item>
     <item
         is-multidex="true"
+        jar="C:\Users\shioya\.gradle\caches\modules-2\files-2.1\com.google.code.gson\gson\2.7\751f548c85fa49f330cecbb1875893f971b33c4e\gson-2.7.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="751f548c85fa49f330cecbb1875893f971b33c4e">
+        <dex dex="C:\Users\shioya\AndroidStudioProjects\Agent_Support\app\build\intermediates\transforms\dex\debug\folders\1000\10\gson-2.7_566db8a79bc06dbc78c57db245746b983fc6c40f\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
         jar="C:\Users\shioya\.android\build-cache\8dee316939129c3c6305fdc3b22c9a73e82bccef\output\jars\classes.jar"
         jumboMode="true"
         optimize="true"
@@ -61,7 +70,7 @@
         jumboMode="true"
         optimize="true"
         revision="25.0.2"
-        sha1="15c472f4317b8688b53b804aa72eade2117e5380">
+        sha1="78d38c8f4908e752abddf22d30cda34ade5091b4">
         <dex dex="C:\Users\shioya\AndroidStudioProjects\Agent_Support\app\build\intermediates\transforms\dex\debug\folders\1000\10000\instant-run-bootstrap_0543e23e10687376ba9b0495745d4edda4d1e1e2\classes.dex" />
     </item>
     <item

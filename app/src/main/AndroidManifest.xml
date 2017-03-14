@@ -44,6 +44,9 @@
             android:name=".AgentFilterActivity"
             android:screenOrientation="landscape"
             android:theme="@style/AppTheme" />
+        <activity
+            android:name=".PointActivity"
+            android:screenOrientation="landscape"/>
     </application>
 
 </manifest>

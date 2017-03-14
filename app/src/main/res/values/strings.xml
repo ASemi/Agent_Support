@@ -40,5 +40,9 @@
     <string name="syomei">証明</string>
     <string name="hosoku">捕捉</string>
     <string name="godou">誤導</string>
+    <string name="point">ポイント状況</string>
+    <string name="add">追加</string>
+    <string name="copy">コピー</string>
+    <string name="delete">削除</string>
     <string name="back">戻る</string>
 </resources>

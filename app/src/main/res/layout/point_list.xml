@@ -49,9 +49,9 @@
         android:padding="5dp">
 
         <ListView
+            android:id="@+id/pointlistView"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:id="@+id/pointlistView" />
+            android:layout_height="match_parent" />
 
     </LinearLayout>
 
@@ -96,7 +96,16 @@
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="1" />
+            android:layout_weight="1">
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="@string/send"
+                android:id="@+id/buttonSend"/>
+
+        </LinearLayout>
+
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="match_parent"

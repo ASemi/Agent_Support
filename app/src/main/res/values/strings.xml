@@ -6,6 +6,7 @@
     <string name="agent">エージェント</string>
     <string name="strategy">諜略</string>
     <string name="agent_open">公開状況</string>
+    <string name="reset">全リセット</string>
     <string name="pop_select">選択</string>
     <string name="pop_detail">詳細</string>
     <string name="pop_cancel">キャンセル</string>
@@ -43,6 +44,7 @@
     <string name="point">ポイント状況</string>
     <string name="add">追加</string>
     <string name="copy">コピー</string>
+    <string name="send">送信</string>
     <string name="delete">削除</string>
     <string name="back">戻る</string>
 </resources>

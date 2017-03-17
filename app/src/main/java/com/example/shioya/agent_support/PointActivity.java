@@ -2,6 +2,8 @@ package com.example.shioya.agent_support;
 
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.content.ClipData;
+import android.content.ClipboardManager;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.SharedPreferences;
@@ -15,13 +17,12 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
-import java.util.List;
 
 public class PointActivity extends Activity implements View.OnClickListener {
 
@@ -37,6 +38,8 @@ public class PointActivity extends Activity implements View.OnClickListener {
 
         findViewById(R.id.backButton).setOnClickListener(this);
         findViewById(R.id.buttonAdd).setOnClickListener(this);
+        findViewById(R.id.buttonCopy).setOnClickListener(this);
+        findViewById(R.id.buttonSend).setOnClickListener(this);
 
         //SharedPreferencesからの取得
         SharedPreferences sp = getApplicationContext().getSharedPreferences("PREF_KEY", Context.MODE_PRIVATE);
@@ -85,9 +88,13 @@ public class PointActivity extends Activity implements View.OnClickListener {
             case R.id.buttonAdd:
                 addPlayer();
                 break;
+            case R.id.buttonCopy:
+                copyPoint();
+                break;
         }
     }
 
+    // プレイヤーをリストに追加
     private void addPlayer() {
         final EditText editView = new EditText(this);
         final PlayerPoint newplayer = new PlayerPoint();
@@ -102,6 +109,20 @@ public class PointActivity extends Activity implements View.OnClickListener {
                 adapter.notifyDataSetChanged();
             }
         }).setNegativeButton("キャンセル", null).show();
+    }
+
+    // 得点状況をクリップボードにコピー
+    private void copyPoint() {
+        ClipboardManager cm = (ClipboardManager)getSystemService(Context.CLIPBOARD_SERVICE);
+        StringBuilder buff = new StringBuilder();
+        for(PlayerPoint player : players) {
+            buff.append(player.name);
+            buff.append(player.point);
+            buff.append('\n');
+        }
+        ClipData cd = ClipData.newPlainText("POINT", buff.toString());
+        cm.setPrimaryClip(cd);
+        Toast.makeText(this, "クリップボードにコピーしました", Toast.LENGTH_SHORT).show();
     }
 
 

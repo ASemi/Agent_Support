@@ -62,7 +62,7 @@ enum AgentName {
     SMALLSPACE(AgentAttribute.SECRET, Gender.FEMALE, AgentPackage.AUGMENT),
     FILLER(AgentAttribute.NORMAL, Gender.MALE, AgentPackage.AUGMENT),
     MOMENTSLEEP(AgentAttribute.NORMAL, Gender.MALE, AgentPackage.AUGMENT),
-    VITARITYRECORDER(AgentAttribute.NORMAL, Gender.MALE, AgentPackage.AUGMENT),
+    VITALITYRECORDER(AgentAttribute.NORMAL, Gender.MALE, AgentPackage.AUGMENT),
     CHAIRMAN(AgentAttribute.SECRET, Gender.MALE, AgentPackage.AUGMENT),
     AMNESIA(AgentAttribute.NORMAL, Gender.MALE, AgentPackage.AUGMENT),
     TIPSY(AgentAttribute.NORMAL, Gender.MALE, AgentPackage.AUGMENT),

@@ -13,7 +13,7 @@ public class Agents {
     Agents() {
         Collections.addAll(name, "speaker","tank","obliqueshadow","titanium","larklady","swanmaiden","huntress","blackhand","nightmare","baronbrumaire","markjunior","staticelectricity",
                 "viper","angel","savageassassin","doubleknight","kwonkiku","darkflow","diamondman","perfume","toughgun","redblade","alias","backfire","trinity","j","detective",
-        "chainer", "psychopass", "goldhead", "neutral", "gamemaster", "duelist", "handstander", "smallspace", "filler", "momentsleep", "vitalityrecorder", "chairman", "amnesia",
+        "chainer", "psychopath", "goldhead", "neutral", "gamemaster", "duelist", "handstander", "smallspace", "filler", "momentsleep", "vitalityrecorder", "chairman", "amnesia",
         "tipsy", "pepper", "juggler", "kurosawa", "lifegamer", "sunflower", "fishcake", "host", "morpheus","trumpeter", "keyboarder", "julius", "fontjunkie", "sprincar", "blackpepper", "shellkeaper", "iphone");
     }
 

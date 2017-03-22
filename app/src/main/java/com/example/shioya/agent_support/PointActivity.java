@@ -7,6 +7,8 @@ import android.content.ClipboardManager;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.SharedPreferences;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
@@ -29,6 +31,13 @@ public class PointActivity extends Activity implements View.OnClickListener {
     ListView listView;
     ArrayList<PlayerPoint> players;
     PointAdapter adapter;
+
+    // ネットワーク接続状態
+    private enum NetworkStatus {
+        OFF, WIFI, MOBILE, OTHER
+    }
+
+    NetworkStatus status = NetworkStatus.OFF;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -91,6 +100,8 @@ public class PointActivity extends Activity implements View.OnClickListener {
             case R.id.buttonCopy:
                 copyPoint();
                 break;
+            case R.id.buttonSend:
+                break;
         }
     }
 
@@ -124,6 +135,44 @@ public class PointActivity extends Activity implements View.OnClickListener {
         cm.setPrimaryClip(cd);
         Toast.makeText(this, "クリップボードにコピーしました", Toast.LENGTH_SHORT).show();
     }
+
+    // データの送信
+    /*
+    private void sendPoint() {
+        ConnectivityManager cm = (ConnectivityManager)this.getSystemService(CONNECTIVITY_SERVICE);
+        NetworkInfo nInfo = cm.getActiveNetworkInfo();
+
+        // 端末のネットワーク状態の確認
+        if (nInfo != null && nInfo.isConnected()) {
+            switch (nInfo.getType()) {
+                case ConnectivityManager.TYPE_WIFI:
+                    status = NetworkStatus.WIFI;
+                    break;
+                case ConnectivityManager.TYPE_MOBILE:
+                    status = NetworkStatus.MOBILE;
+                    break;
+                default:
+                    status = NetworkStatus.OTHER;
+                    break;
+            }
+        }
+
+        // 名前とポイントをJSONの形に
+        Gson gson = new Gson();
+        String json = gson.toJson(players);
+
+        // ネットワーク接続状態に応じた処理
+        if (status == NetworkStatus.WIFI) {
+            HttpAsyncConnection connection = new HttpAsyncConnection(this, )
+        }
+
+
+
+
+
+    }
+    */
+
 
 
     private class PointAdapter extends BaseAdapter {

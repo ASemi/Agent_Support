@@ -3,6 +3,7 @@ package com.example.shioya.agent_support;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.os.AsyncTask;
+import android.util.Log;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -14,11 +15,12 @@ import java.io.PrintWriter;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.nio.Buffer;
 
 /**
  * Created by shioya on 2017/03/17.
  */
-/*
+
 public class HttpAsyncConnection extends AsyncTask<String, Integer, String> {
     public interface AsyncTaskCallback {
         void postExecute();
@@ -27,26 +29,34 @@ public class HttpAsyncConnection extends AsyncTask<String, Integer, String> {
     private final String TAG = "HttpAsyncConnection";
     Context context;
     private AsyncTaskCallback callback = null;
-    String jsonarray; // 送るJSON array
+    int id = R.id.buttonSend;
 
     // URL
     URL url;
     HttpURLConnection httpurl;
 
+    // PHPに送信するために必要
     PrintWriter pw;
+    String jsonarray; // 送るJSON array
+
+    BufferedReader r;
 
 
     // コンストラクタ
-    public HttpAsyncConnection(Context context, AsyncTaskCallback _callback) {
+    public HttpAsyncConnection(Context context, String json, int id, AsyncTaskCallback _callback) {
         super();
         this.context = context;
+        this.jsonarray = json;
+        this.id = id;
         this.callback = _callback;
     }
 
     // 非同期処理の前の処理
     @Override
     protected void onPreExecute() {
+
         super.onPreExecute();
+
     }
 
     // 実際に通信する部分
@@ -56,20 +66,38 @@ public class HttpAsyncConnection extends AsyncTask<String, Integer, String> {
         final String ENCORDING = "UTF-8";       // エンコード
         try {
             // URLの指定 OPTUS IP 192.168.0.115
-            url = new URL("http://192.168.0.115/Agent/point_sender.php");
+            switch (id) {
+                case R.id.buttonSend:
+                    url = new URL("http://192.168.0.115/Agent/point_receiver.php");
+                    break;
+            }
 
             // HTTP通信
             httpurl = (HttpURLConnection)url.openConnection();
             httpurl.setRequestMethod("POST");
             httpurl.setConnectTimeout(CONNECT_TIMEOUT);
             httpurl.setDoInput(true);
-            //httpurl.setDoOutput(true);
+            httpurl.setDoOutput(true);
             httpurl.setUseCaches(false);
             httpurl.connect();
 
-            // 送信用のWriter
+            // 送信用
+            switch (id) {
+                case R.id.buttonSend:
+                    pw = new PrintWriter(new BufferedWriter(new OutputStreamWriter(httpurl.getOutputStream(), ENCORDING)));
+                    pw.write(jsonarray);
+                    pw.close();
+
+                    r = new BufferedReader(new InputStreamReader(httpurl.getInputStream()));
+                    System.out.println(r.readLine());
+                    r.close();
+            }
+
+
+            return "null";
 
             // 受信用
+            /*
             InputStream in = httpurl.getInputStream();
             StringBuffer sb = new StringBuffer();
             String st = "";
@@ -84,6 +112,7 @@ public class HttpAsyncConnection extends AsyncTask<String, Integer, String> {
             }
 
             return sb.toString();
+            */
 
 
         } catch (MalformedURLException e) {
@@ -109,4 +138,3 @@ public class HttpAsyncConnection extends AsyncTask<String, Integer, String> {
     }
 
 }
-*/

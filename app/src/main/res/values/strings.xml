@@ -43,8 +43,10 @@
     <string name="godou">誤導</string>
     <string name="point">ポイント状況</string>
     <string name="add">追加</string>
+    <string name="zeropoint">０点</string>
     <string name="copy">コピー</string>
     <string name="send">送信</string>
+    <string name="synchro">同期</string>
     <string name="delete">削除</string>
     <string name="back">戻る</string>
 </resources>

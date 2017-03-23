@@ -63,28 +63,32 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:layout_gravity="center"
-                android:id="@+id/menuButton1"/>
+                android:id="@+id/menuButton1"
+                android:scaleType="fitXY"/>
 
             <ImageButton
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:layout_gravity="center"
-                android:id="@+id/menuButton2"/>
+                android:id="@+id/menuButton2"
+                android:scaleType="fitXY"/>
 
             <ImageButton
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:layout_gravity="center"
-                android:id="@+id/menuButton3"/>
+                android:id="@+id/menuButton3"
+                android:scaleType="fitXY"/>
 
             <ImageButton
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:layout_gravity="center"
-                android:id="@+id/menuButton4"/>
+                android:id="@+id/menuButton4"
+                android:scaleType="fitXY"/>
 
         </LinearLayout>
 

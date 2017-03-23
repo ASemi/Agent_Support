@@ -9,6 +9,8 @@ import android.content.DialogInterface;
 import android.content.SharedPreferences;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+import android.net.wifi.WifiInfo;
+import android.net.wifi.WifiManager;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
@@ -48,7 +50,9 @@ public class PointActivity extends Activity implements View.OnClickListener {
         findViewById(R.id.backButton).setOnClickListener(this);
         findViewById(R.id.buttonAdd).setOnClickListener(this);
         findViewById(R.id.buttonCopy).setOnClickListener(this);
+        findViewById(R.id.buttonZero).setOnClickListener(this);
         findViewById(R.id.buttonSend).setOnClickListener(this);
+        findViewById(R.id.buttonSynchro).setOnClickListener(this);
 
         //SharedPreferencesからの取得
         SharedPreferences sp = getApplicationContext().getSharedPreferences("PREF_KEY", Context.MODE_PRIVATE);
@@ -97,10 +101,17 @@ public class PointActivity extends Activity implements View.OnClickListener {
             case R.id.buttonAdd:
                 addPlayer();
                 break;
+            case R.id.buttonZero:
+                toReset();
+                break;
             case R.id.buttonCopy:
                 copyPoint();
                 break;
             case R.id.buttonSend:
+                sendPoint(R.id.buttonSend);
+                break;
+            case R.id.buttonSynchro:
+                //sendPoint(R.id.buttonSynchro);
                 break;
         }
     }
@@ -136,9 +147,28 @@ public class PointActivity extends Activity implements View.OnClickListener {
         Toast.makeText(this, "クリップボードにコピーしました", Toast.LENGTH_SHORT).show();
     }
 
+    private void toReset() {
+        new AlertDialog.Builder(this)
+                .setTitle("点数リセット")
+                .setMessage("点数をリセットします。よろしいですか？")
+                .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        for(PlayerPoint p : players) {
+                            p.point = 0;
+                        }
+                        adapter.notifyDataSetChanged();
+                    }
+                })
+                .setNegativeButton("キャンセル", null)
+                .show();
+    }
+
     // データの送信
-    /*
-    private void sendPoint() {
+    // idにはボタンのIDを指定
+    // 「送信」ボタン：現在のポイントデータをサーバに送信
+    // 「同期」ボタン：サーバからポイントデータを取得
+    private void sendPoint(int id) {
         ConnectivityManager cm = (ConnectivityManager)this.getSystemService(CONNECTIVITY_SERVICE);
         NetworkInfo nInfo = cm.getActiveNetworkInfo();
 
@@ -159,19 +189,28 @@ public class PointActivity extends Activity implements View.OnClickListener {
 
         // 名前とポイントをJSONの形に
         Gson gson = new Gson();
-        String json = gson.toJson(players);
+        final String json = gson.toJson(players);
 
         // ネットワーク接続状態に応じた処理
         if (status == NetworkStatus.WIFI) {
-            HttpAsyncConnection connection = new HttpAsyncConnection(this, )
+
+            HttpAsyncConnection connection = new HttpAsyncConnection(this, json, id, new HttpAsyncConnection.AsyncTaskCallback() {
+
+                @Override
+                public void postExecute() {
+                    Toast.makeText(PointActivity.this, "送信完了", Toast.LENGTH_SHORT).show();
+                }
+            });
+
+            connection.execute();
+        } else {
+            new AlertDialog.Builder(PointActivity.this)
+                    .setTitle("ネットワークへの接続")
+                    .setMessage("WIFIネットワークに接続できません")
+                    .setPositiveButton("OK", null)
+                    .show();
         }
-
-
-
-
-
     }
-    */
 
 
 

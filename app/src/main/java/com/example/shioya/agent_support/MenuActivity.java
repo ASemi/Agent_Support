@@ -20,8 +20,6 @@ public class MenuActivity extends Activity implements View.OnClickListener {
     Bitmap mBitmap2;
     Bitmap mBitmap3;
     Bitmap mBitmap4;
-    int scaleW;
-    int scaleH;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,13 +37,6 @@ public class MenuActivity extends Activity implements View.OnClickListener {
         imageButton3.setOnClickListener(this);
         imageButton4.setOnClickListener(this);
 
-        opt.inJustDecodeBounds = true;
-        BitmapFactory.decodeResource(getResources(), R.drawable.menucardlist, opt);
-
-        scaleW = opt.outWidth / 150;
-        scaleH = opt.outHeight / 30;
-        opt.inSampleSize = Math.max(scaleW, scaleH);
-
 
     }
 
@@ -55,8 +46,8 @@ public class MenuActivity extends Activity implements View.OnClickListener {
         opt.inJustDecodeBounds = false;
         mBitmap1 = BitmapFactory.decodeResource(getResources(), R.drawable.menucardlist, opt);
         mBitmap2 = BitmapFactory.decodeResource(getResources(), R.drawable.menupepper, opt);
-        mBitmap3 = BitmapFactory.decodeResource(getResources(), R.drawable.menuvoice, opt);
-        mBitmap4 = BitmapFactory.decodeResource(getResources(), R.drawable.menuagentnine, opt);
+        mBitmap3 = BitmapFactory.decodeResource(getResources(), R.drawable.menupoint, opt);
+        mBitmap4 = BitmapFactory.decodeResource(getResources(), R.drawable.menunineagent, opt);
 
         imageButton1.setImageBitmap(mBitmap1);
         imageButton2.setImageBitmap(mBitmap2);

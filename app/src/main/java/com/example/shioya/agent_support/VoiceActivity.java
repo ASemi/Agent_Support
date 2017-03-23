@@ -29,12 +29,20 @@ public class VoiceActivity extends Activity implements View.OnClickListener, Tex
 
     private TextToSpeech tts;
     private static final String TAG = "TestTTS";
-    double rand_select = 1.0;
+    double rand_select_1p = 1.0;
+    double rand_select_nice = 1.0;
+
     SoundPool soundPool;
     Button buttonOne;
     int soundOne;
-    String defaultString="1ポイント";
-    SpannableString spanString;
+    String defaultString_1p ="1ポイント";
+    SpannableString spanString_1p;
+
+    Button buttonNice;
+    int soundNice;
+    String defaultString_nice = "ナイスゥ";
+    SpannableString spanString_nice;
+
     private SeekBar pitchseekBar;
     private SeekBar speedseekBar;
     private TextView pitchtext;
@@ -53,7 +61,8 @@ public class VoiceActivity extends Activity implements View.OnClickListener, Tex
         buttonOne = (Button)findViewById(R.id.buttonOnepoint);
         buttonOne.setOnClickListener(this);
         findViewById(R.id.buttonSibui).setOnClickListener(this);
-        findViewById(R.id.buttonNice).setOnClickListener(this);
+        buttonNice = (Button) findViewById(R.id.buttonNice);
+        buttonNice.setOnClickListener(this);
         findViewById(R.id.buttonReach).setOnClickListener(this);
         findViewById(R.id.buttonImnot).setOnClickListener(this);
         findViewById(R.id.buttonKyohi).setOnClickListener(this);
@@ -111,9 +120,13 @@ public class VoiceActivity extends Activity implements View.OnClickListener, Tex
 
         // soundpoolインスタンス
         soundPool = buildSoundPool();
-        soundOne = soundPool.load(this, R.raw.onepoints, 1);
-        spanString = new SpannableString(defaultString);
-        spanString.setSpan(new StyleSpan(Typeface.BOLD), 0, spanString.length(), 0);
+        soundOne = soundPool.load(this, R.raw.onepoints2, 1);
+        spanString_1p = new SpannableString(defaultString_1p);
+        spanString_1p.setSpan(new StyleSpan(Typeface.BOLD), 0, spanString_1p.length(), 0);
+
+        soundNice = soundPool.load(this, R.raw.niceu, 1);
+        spanString_nice = new SpannableString(defaultString_nice);
+        spanString_nice.setSpan(new StyleSpan(Typeface.BOLD), 0, spanString_nice.length(), 0);
 
     }
 
@@ -141,23 +154,33 @@ public class VoiceActivity extends Activity implements View.OnClickListener, Tex
                 speechText("潤沢");
                 break;
             case R.id.buttonOnepoint:
-                if (rand_select <= 0.1) {
+                if (rand_select_1p <= 0.1) {
                     soundPool.play(soundOne, 1.0f, 1.0f, 0, 0, 1);
                 } else {
                     speechText("わんぽーいんつ");
                 }
-                rand_select = Math.random();
-                if (rand_select <= 0.1) {
-                    buttonOne.setText(spanString);
+                rand_select_1p = Math.random();
+                if (rand_select_1p <= 0.1) {
+                    buttonOne.setText(spanString_1p);
                 } else {
-                    buttonOne.setText(defaultString);
+                    buttonOne.setText(defaultString_1p);
                 }
                 break;
             case R.id.buttonSibui:
                 speechText("渋い");
                 break;
             case R.id.buttonNice:
-                speechText("ナイスー");
+                if (rand_select_nice <= 0.1) {
+                    soundPool.play(soundNice, 1.0f, 1.0f, 0, 0, 1);
+                } else {
+                    speechText("ナイスー");
+                }
+                rand_select_nice = Math.random();
+                if (rand_select_nice <= 0.1) {
+                    buttonNice.setText(spanString_nice);
+                } else {
+                    buttonNice.setText(defaultString_nice);
+                }
                 break;
             case R.id.buttonReach:
                 speechText("リーチ");

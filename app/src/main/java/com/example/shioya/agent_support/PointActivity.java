@@ -31,7 +31,7 @@ public class PointActivity extends Activity implements View.OnClickListener {
     ListView listView;
     ArrayList<PlayerPoint> players;
     PointAdapter adapter;
-    private boolean SuperUser = false;
+    private boolean SuperUser = true;
 
     // ネットワーク接続状態
     private enum NetworkStatus {

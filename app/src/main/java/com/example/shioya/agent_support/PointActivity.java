@@ -9,8 +9,6 @@ import android.content.DialogInterface;
 import android.content.SharedPreferences;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
-import android.net.wifi.WifiInfo;
-import android.net.wifi.WifiManager;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
@@ -33,6 +31,7 @@ public class PointActivity extends Activity implements View.OnClickListener {
     ListView listView;
     ArrayList<PlayerPoint> players;
     PointAdapter adapter;
+    private boolean SuperUser = false;
 
     // ネットワーク接続状態
     private enum NetworkStatus {
@@ -108,7 +107,15 @@ public class PointActivity extends Activity implements View.OnClickListener {
                 copyPoint();
                 break;
             case R.id.buttonSend:
-                sendPoint(R.id.buttonSend);
+                if (SuperUser == false) {
+                    new AlertDialog.Builder(this)
+                            .setTitle("送信")
+                            .setMessage("権限がありません")
+                            .setPositiveButton("OK", null)
+                            .show();
+                } else {
+                    sendPoint(R.id.buttonSend);
+                }
                 break;
             case R.id.buttonSynchro:
                 sendPoint(R.id.buttonSynchro);

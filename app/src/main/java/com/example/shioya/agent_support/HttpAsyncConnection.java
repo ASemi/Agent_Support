@@ -3,6 +3,7 @@ package com.example.shioya.agent_support;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.os.AsyncTask;
+import android.telecom.Call;
 import android.util.Log;
 
 import java.io.BufferedReader;
@@ -23,7 +24,7 @@ import java.nio.Buffer;
 
 public class HttpAsyncConnection extends AsyncTask<String, Integer, String> {
     public interface AsyncTaskCallback {
-        void postExecute();
+        void postExecute(String res);
     }
 
     private final String TAG = "HttpAsyncConnection";
@@ -64,12 +65,16 @@ public class HttpAsyncConnection extends AsyncTask<String, Integer, String> {
     protected String doInBackground(String... params) {
         final int CONNECT_TIMEOUT = 10 * 1000;  // タイムアウト設定[ms]
         final String ENCORDING = "UTF-8";       // エンコード
+        String result = null;
+
         try {
             // URLの指定 OPTUS IP 192.168.0.115
             switch (id) {
                 case R.id.buttonSend:
                     url = new URL("http://192.168.0.115/Agent/point_receiver.php");
                     break;
+                case R.id.buttonSynchro:
+                    url = new URL("http://192.168.0.115/Agent/point_synchro.php");
             }
 
             // HTTP通信
@@ -81,38 +86,41 @@ public class HttpAsyncConnection extends AsyncTask<String, Integer, String> {
             httpurl.setUseCaches(false);
             httpurl.connect();
 
-            // 送信用
+
             switch (id) {
+                // 送信用
                 case R.id.buttonSend:
                     pw = new PrintWriter(new BufferedWriter(new OutputStreamWriter(httpurl.getOutputStream(), ENCORDING)));
                     pw.write(jsonarray);
                     pw.close();
 
                     r = new BufferedReader(new InputStreamReader(httpurl.getInputStream()));
-                    System.out.println(r.readLine());
+                    result = r.readLine();
+                    System.out.println(result);
                     r.close();
+                    break;
+                // 受信用
+                case R.id.buttonSynchro:
+                    InputStream in = httpurl.getInputStream();
+                    StringBuffer sb = new StringBuffer();
+                    String st = "";
+                    BufferedReader br = new BufferedReader(new InputStreamReader(in, ENCORDING));
+                    while ((st = br.readLine()) != null) {
+                        sb.append(st);
+                    }
+                    try {
+                        in.close();
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                    result = sb.toString();
+                    System.out.println(result);
+                    br.close();
+                    break;
             }
 
+            return result;
 
-            return "null";
-
-            // 受信用
-            /*
-            InputStream in = httpurl.getInputStream();
-            StringBuffer sb = new StringBuffer();
-            String st = "";
-            BufferedReader br = new BufferedReader(new InputStreamReader(in, ENCORDING));
-            while ((st = br.readLine()) != null) {
-                sb.append(st);
-            }
-            try {
-                in.close();
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-
-            return sb.toString();
-            */
 
 
         } catch (MalformedURLException e) {
@@ -134,7 +142,9 @@ public class HttpAsyncConnection extends AsyncTask<String, Integer, String> {
     // 通信終了時
     @Override
     protected void onPostExecute(String result) {
-        callback.postExecute();
+        super.onPostExecute(result);
+        callback.postExecute(result);
     }
+
 
 }

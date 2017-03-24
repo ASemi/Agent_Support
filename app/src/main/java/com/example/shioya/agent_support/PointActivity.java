@@ -111,7 +111,7 @@ public class PointActivity extends Activity implements View.OnClickListener {
                 sendPoint(R.id.buttonSend);
                 break;
             case R.id.buttonSynchro:
-                //sendPoint(R.id.buttonSynchro);
+                sendPoint(R.id.buttonSynchro);
                 break;
         }
     }
@@ -168,9 +168,10 @@ public class PointActivity extends Activity implements View.OnClickListener {
     // idにはボタンのIDを指定
     // 「送信」ボタン：現在のポイントデータをサーバに送信
     // 「同期」ボタン：サーバからポイントデータを取得
-    private void sendPoint(int id) {
+    private void sendPoint(final int id) {
         ConnectivityManager cm = (ConnectivityManager)this.getSystemService(CONNECTIVITY_SERVICE);
         NetworkInfo nInfo = cm.getActiveNetworkInfo();
+        String json = null;
 
         // 端末のネットワーク状態の確認
         if (nInfo != null && nInfo.isConnected()) {
@@ -187,9 +188,12 @@ public class PointActivity extends Activity implements View.OnClickListener {
             }
         }
 
-        // 名前とポイントをJSONの形に
-        Gson gson = new Gson();
-        final String json = gson.toJson(players);
+        if (id == R.id.buttonSend) {
+            // 名前とポイントをJSONの形に
+            Gson gson = new Gson();
+            json = gson.toJson(players);
+        }
+
 
         // ネットワーク接続状態に応じた処理
         if (status == NetworkStatus.WIFI) {
@@ -197,12 +201,40 @@ public class PointActivity extends Activity implements View.OnClickListener {
             HttpAsyncConnection connection = new HttpAsyncConnection(this, json, id, new HttpAsyncConnection.AsyncTaskCallback() {
 
                 @Override
-                public void postExecute() {
-                    Toast.makeText(PointActivity.this, "送信完了", Toast.LENGTH_SHORT).show();
+                public void postExecute(String res) {
+                    switch (id) {
+                        case R.id.buttonSend:
+                            Toast.makeText(PointActivity.this, "送信完了", Toast.LENGTH_SHORT).show();
+                            break;
+                        case R.id.buttonSynchro:
+                            final String json_sync = res;
+                            new AlertDialog.Builder(PointActivity.this)
+                                    .setTitle("同期")
+                                    .setMessage("プレイヤーと点数の同期を行います")
+                                    .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                                        @Override
+                                        public void onClick(DialogInterface dialog, int which) {
+                                            Gson gson = new Gson();
+                                            players = gson.fromJson(json_sync, new TypeToken<ArrayList<PlayerPoint>>(){}.getType());
+                                            listView.setAdapter(null);
+                                            adapter = null;
+                                            adapter = new PointAdapter(PointActivity.this);
+                                            adapter.setPlayerPoints(players);
+                                            listView.setAdapter(adapter);
+                                            Toast.makeText(PointActivity.this, "同期完了", Toast.LENGTH_SHORT).show();
+                                        }
+                                    })
+                                    .setNegativeButton("キャンセル", null)
+                                    .show();
+
+
+                            break;
+                    }
                 }
             });
-
             connection.execute();
+
+
         } else {
             new AlertDialog.Builder(PointActivity.this)
                     .setTitle("ネットワークへの接続")

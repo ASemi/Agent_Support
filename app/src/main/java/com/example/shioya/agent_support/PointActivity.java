@@ -1,5 +1,6 @@
 package com.example.shioya.agent_support;
 
+import android.annotation.TargetApi;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.ClipData;
@@ -7,10 +8,16 @@ import android.content.ClipboardManager;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.SharedPreferences;
+import android.media.AudioAttributes;
+import android.media.AudioManager;
+import android.media.SoundPool;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+import android.os.Build;
 import android.os.Bundle;
+import android.speech.tts.TextToSpeech;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -25,13 +32,17 @@ import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
-public class PointActivity extends Activity implements View.OnClickListener {
+public class PointActivity extends Activity implements View.OnClickListener, TextToSpeech.OnInitListener {
 
     ListView listView;
     ArrayList<PlayerPoint> players;
     PointAdapter adapter;
     private boolean SuperUser = true;
+
+    TextToSpeech tts;
+    private static final String TAG = "PointTTS";
 
     // ネットワーク接続状態
     private enum NetworkStatus {
@@ -73,6 +84,8 @@ public class PointActivity extends Activity implements View.OnClickListener {
         adapter = new PointAdapter(this);
         adapter.setPlayerPoints(players);
         listView.setAdapter(adapter);
+
+        tts = new TextToSpeech(this, this);
 
     }
 
@@ -305,6 +318,7 @@ public class PointActivity extends Activity implements View.OnClickListener {
             buttonPlus.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+                    speechText("わんぽーいんつ");
                     PlayerPoint p = playerPoints.get(position);
                     p.point++;
                     pointText.setText(String.format("%d", p.getPoint()));
@@ -332,6 +346,78 @@ public class PointActivity extends Activity implements View.OnClickListener {
 
             return convertView;
 
+        }
+    }
+
+
+    // 以下、TTSの設定
+    // VoiceActivityのものと同一なので読む必要はない
+    @Override
+    public void onInit(int status) {
+        // TTS初期化
+        if (TextToSpeech.SUCCESS == status) {
+            Log.d(TAG, "initialized");
+        } else {
+            Log.e(TAG, "failed to initialize");
+        }
+    }
+
+    @SuppressWarnings("deprecation")
+    @TargetApi(Build.VERSION_CODES.LOLLIPOP)
+    private SoundPool buildSoundPool() {
+        SoundPool pool;
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.LOLLIPOP) {
+            pool = new SoundPool(1, AudioManager.STREAM_MUSIC, 0);
+        } else {
+            AudioAttributes attr = new AudioAttributes.Builder().setUsage(AudioAttributes.USAGE_MEDIA).setContentType(AudioAttributes.CONTENT_TYPE_MUSIC).build();
+            pool = new SoundPool.Builder().setAudioAttributes(attr).setMaxStreams(1).build();
+        }
+
+        return  pool;
+    }
+
+    private void speechText(String string) {
+        String utteranceId = this.hashCode() + "";
+
+        if (0 < string.length()) {
+            if (tts.isSpeaking()) {
+                tts.stop();
+                return;
+            }
+
+            if (null != tts) {
+                tts.setSpeechRate(1.0f);
+                tts.setPitch(1.0f);
+            }
+
+            // Androidバージョンによって記法を若干かえる
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                ttsGreater21(string, utteranceId);
+            } else {
+                ttsUnder20(string, utteranceId);
+            }
+        }
+    }
+
+    // 古いAndroidにおけるTTS呼び出し
+    @SuppressWarnings("deprecation")
+    private void ttsUnder20(String string, String utteranceId) {
+        HashMap<String, String> map = new HashMap<>();
+        map.put(TextToSpeech.Engine.KEY_PARAM_UTTERANCE_ID, utteranceId);
+        tts.speak(string, TextToSpeech.QUEUE_FLUSH, map);
+    }
+
+    // 現在のAndroidにおけるTTS呼び出し
+    @TargetApi(Build.VERSION_CODES.LOLLIPOP)
+    private void ttsGreater21(String string, String utteranceId) {
+        tts.speak(string, TextToSpeech.QUEUE_FLUSH, null, utteranceId);
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        if (null != tts) {
+            tts.shutdown();
         }
     }
 

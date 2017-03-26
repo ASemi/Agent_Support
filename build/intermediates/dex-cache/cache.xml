@@ -11,6 +11,15 @@
         <dex dex="C:\Users\shioya\AndroidStudioProjects\Agent_Support\app\build\intermediates\pre-dexed\debug\classes_bb5217cae294f83d026e9e3796d0c5effdd6f31c.jar" />
     </item>
     <item
+        is-multidex="true"
+        jar="C:\Users\shioya\AndroidStudioProjects\Agent_Support\app\build\intermediates\incremental-runtime-classes\debug\instant-run.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="c82741bc129dd5f99f11a4ab8666ae24262053b6">
+        <dex dex="C:\Users\shioya\AndroidStudioProjects\Agent_Support\app\build\intermediates\transforms\dex\debug\folders\1000\10000\instant-run_31e292bf12d2487a607a43274c5f83d512e2a335\classes.dex" />
+    </item>
+    <item
         is-multidex="false"
         jar="C:\Users\shioya\.android\build-cache\7046b422b7fe13768c5cac0b1fcb28155d783df9\output\jars\classes.jar"
         jumboMode="false"
@@ -36,6 +45,24 @@
         revision="25.0.2"
         sha1="d7c42c80f6509b9ea4db28ca7859ffae08ec5741">
         <dex dex="C:\Users\shioya\AndroidStudioProjects\Agent_Support\app\build\intermediates\pre-dexed\debug\classes_1c45df404765a170eab87d6454741137fc02d11b.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\shioya\.gradle\caches\modules-2\files-2.1\com.google.code.gson\gson\2.7\751f548c85fa49f330cecbb1875893f971b33c4e\gson-2.7.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="751f548c85fa49f330cecbb1875893f971b33c4e">
+        <dex dex="C:\Users\shioya\AndroidStudioProjects\Agent_Support\app\build\intermediates\pre-dexed\debug\gson-2.7_566db8a79bc06dbc78c57db245746b983fc6c40f.jar" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\shioya\AndroidStudioProjects\Agent_Support\app\build\intermediates\incremental-classes\debug\instant-run-bootstrap.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="d8a114d609c602d4ececa7eec6a79029aaae96aa">
+        <dex dex="C:\Users\shioya\AndroidStudioProjects\Agent_Support\app\build\intermediates\transforms\dex\debug\folders\1000\10000\instant-run-bootstrap_0543e23e10687376ba9b0495745d4edda4d1e1e2\classes.dex" />
     </item>
     <item
         is-multidex="false"
@@ -66,30 +93,21 @@
     </item>
     <item
         is-multidex="false"
-        jar="C:\Users\shioya\.android\build-cache\b32977b562f31edb24407faf58b41d5842ca3dd3\output\jars\classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="25.0.2"
-        sha1="702d339bc0a81d21354cd7e2cf2b67225fa4a16c">
-        <dex dex="C:\Users\shioya\AndroidStudioProjects\Agent_Support\app\build\intermediates\pre-dexed\debug\classes_605cdafa1c02b64fde85cdb1e58fec0afcd1379c.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="C:\Users\shioya\.gradle\caches\modules-2\files-2.1\com.google.code.gson\gson\2.7\751f548c85fa49f330cecbb1875893f971b33c4e\gson-2.7.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="25.0.2"
-        sha1="751f548c85fa49f330cecbb1875893f971b33c4e">
-        <dex dex="C:\Users\shioya\AndroidStudioProjects\Agent_Support\app\build\intermediates\pre-dexed\debug\gson-2.7_566db8a79bc06dbc78c57db245746b983fc6c40f.jar" />
-    </item>
-    <item
-        is-multidex="false"
         jar="C:\Users\shioya\.android\build-cache\e027a6a545c23986d90cbb76bddc502f0461ebcb\output\jars\classes.jar"
         jumboMode="false"
         optimize="true"
         revision="25.0.2"
         sha1="fa0446a14ed5dd3725047d6399ffea771a564b30">
         <dex dex="C:\Users\shioya\AndroidStudioProjects\Agent_Support\app\build\intermediates\pre-dexed\debug\classes_b0d775775e9cad092f5c38cca54052bf1e6c580c.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\shioya\.android\build-cache\b32977b562f31edb24407faf58b41d5842ca3dd3\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="702d339bc0a81d21354cd7e2cf2b67225fa4a16c">
+        <dex dex="C:\Users\shioya\AndroidStudioProjects\Agent_Support\app\build\intermediates\pre-dexed\debug\classes_605cdafa1c02b64fde85cdb1e58fec0afcd1379c.jar" />
     </item>
     <item
         is-multidex="false"

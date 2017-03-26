@@ -35,7 +35,7 @@ public class VoiceActivity extends Activity implements View.OnClickListener, Tex
     SoundPool soundPool;
     Button buttonOne;
     int soundOne;
-    String defaultString_1p ="1ポイント";
+    String defaultString_1p ="１ポイント";
     SpannableString spanString_1p;
 
     Button buttonNice;

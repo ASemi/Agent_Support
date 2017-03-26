@@ -102,8 +102,27 @@ enum AgentName {
     public String getName() {
         return name().toLowerCase();
     }
+}
 
+enum SubAgentName {
+    // サブエージェント一覧
+    OPTUS(AgentAttribute.PUBLIC),
+    HIMAWARI(AgentAttribute.NORMAL),
+    PENGUIN(AgentAttribute.NORMAL),
+    EUROPA(AgentAttribute.PUBLIC),
+    GLIESE(AgentAttribute.PUBLIC),
+    VENUS(AgentAttribute.NORMAL),
+    SATURN(AgentAttribute.PUBLIC),
+    TURBOTITANMARS(AgentAttribute.NORMAL),
 
+    // 初期化用（使うかは未定）
+    ALLFILTER(AgentAttribute.ALL);
 
+    public final AgentAttribute agentAttribute;
 
+    private SubAgentName(AgentAttribute agentAttribute) {
+        this.agentAttribute = agentAttribute;
+    }
+
+    public String getName() { return name().toLowerCase(); }
 }

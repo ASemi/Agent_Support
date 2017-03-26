@@ -71,6 +71,15 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
+                    android:text="@string/sub_agent"
+                    android:textStyle="bold"
+                    android:background="@drawable/button_state"
+                    android:id="@+id/subagentButton"/>
+
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
                     android:text="@string/strategy"
                     android:textStyle="bold"
                     android:background="@drawable/button_state"

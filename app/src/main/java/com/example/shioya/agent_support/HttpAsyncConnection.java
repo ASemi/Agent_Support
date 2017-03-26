@@ -3,8 +3,6 @@ package com.example.shioya.agent_support;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.os.AsyncTask;
-import android.telecom.Call;
-import android.util.Log;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -16,7 +14,6 @@ import java.io.PrintWriter;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.nio.Buffer;
 
 /**
  * Created by shioya on 2017/03/17.
